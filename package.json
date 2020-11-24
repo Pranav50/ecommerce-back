@@ -1,5 +1,5 @@
 {
-  "name": "ecommerce_server",
+  "name": "backend",
   "version": "1.0.0",
   "description": "React Server",
   "main": "app.js",
@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "nodemon app.js",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
