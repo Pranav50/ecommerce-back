@@ -46,7 +46,7 @@ const Orders = () => {
         } else {
             return <h1 className="text-danger">No orders</h1>;
         }
-    };
+    }
 
     const showInput = (key, value) => (
         <div className="input-group mb-2 mr-sm-2">

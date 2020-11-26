@@ -2,7 +2,7 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken"); // to generate signed token
 const expressJwt = require("express-jwt"); // for authorization check
 const { errorHandler } = require("../helpers/dbErrorHandler");
-const {JWT_SECRET} = require('../config/jwt')
+const {JWT_SECRET} = require('../config/keys')
 
 exports.signup = (req, res) => {
     // console.log("req.body", req.body);

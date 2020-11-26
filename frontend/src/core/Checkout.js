@@ -79,15 +79,13 @@ const Checkout = ({ products }) => {
                 //     getTotal(products)
                 // );
                 const paymentData = {
-                    paymentMethodNonce: nonce,
+                    paymentMethodNonce:nonce,
                     amount: getTotal(products)
-                };
+                }
 
                 processPayment(userId, token, paymentData)
                     .then(response => {
-                        console.log(response);
-                        // empty cart
-                        // create order
+                        //console.log(response);
 
                         const createOrderData = {
                             products: products,
@@ -102,21 +100,19 @@ const Checkout = ({ products }) => {
                                     console.log(
                                         "payment success and empty cart"
                                     );
-                                    setData({
-                                        loading: false,
-                                        success: true 
-                                    });
-                                });
+                                    setData({ loading: false, success: true });
+                                })
                             })
-                            .catch(error => {
-                                console.log(error);
-                                setData({ loading: false });
-                            });
-                    })
-                    .catch(error => {
+
+                        // setData({...data, success: response.success});
+                        
+                    }).catch(error => {
                         console.log(error);
-                        setData({ loading: false });
-                    });
+                        //setData({ loading: false });
+                });
+                
+
+                
             })
             .catch(error => {
                 // console.log("dropin error: ", error);
@@ -188,3 +184,40 @@ const Checkout = ({ products }) => {
 };
 
 export default Checkout;
+
+/* 
+processPayment(userId, token, paymentData)
+                    .then(response => {
+                        console.log(response);
+                        // empty cart
+                        // create order
+
+                        const createOrderData = {
+                            products: products,
+                            transaction_id: response.transaction.id,
+                            amount: response.transaction.amount,
+                            address: deliveryAddress
+                        };
+
+                createOrder(userId, token, createOrderData)
+                            .then(response => {
+                                emptyCart(() => {
+                                    console.log(
+                                        "payment success and empty cart"
+                                    );
+                                    setData({
+                                        loading: false,
+                                        success: true 
+                                    });
+                                });
+                            })
+                            .catch(error => {
+                                console.log(error);
+                                setData({ loading: false });
+                            });
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        setData({ loading: false });
+                    });
+*/

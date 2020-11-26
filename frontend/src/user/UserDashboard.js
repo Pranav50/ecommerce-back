@@ -71,7 +71,6 @@ const Dashboard = () => {
                         {history.map((h, i) => {
                             return (
                                 <div>
-                                    <hr />
                                     {h.products.map((p, i) => {
                                         return (
                                             <div key={i}>
@@ -85,6 +84,7 @@ const Dashboard = () => {
                                                         p.createdAt
                                                     ).fromNow()}
                                                 </h6>
+                                                <hr/>
                                             </div>
                                         );
                                     })}
