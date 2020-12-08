@@ -18,7 +18,6 @@ const {MONGO_URI} = require('./config/keys')
 const app = express();
 
 // Pranav500
-// BIETG7WUepIsVk3t
 
 // db
 mongoose
