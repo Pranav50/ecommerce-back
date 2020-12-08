@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const braintree = require("braintree");
-require("dotenv").config();
+//require("dotenv").config();
 const {BRAINTREE_MERCHANT_ID} = require('../config/keys')
 const {BRAINTREE_PUBLIC_KEY} = require('../config/keys')
 const {BRAINTREE_PRIVATE_KEY} = require('../config/keys')
