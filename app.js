@@ -1,11 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require("dotenv").config();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const expressValidator = require("express-validator");
 const cors = require('cors')
-//require("dotenv").config();
+
 // import routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
@@ -13,7 +14,7 @@ const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const braintreeRoutes = require("./routes/braintree");
 const orderRoutes = require('./routes/order');
-const {MONGO_URI} = require('./config/keys')
+const {MONGO_URI} = require('./config/dev')
 // app
 const app = express();
 
@@ -44,13 +45,13 @@ app.use("/api", orderRoutes);
 
 const port = process.env.PORT || 8000;
 
-if(process.env.NODE_ENV=="production") {
-    app.use(express.static('frontend/build'))
-    const path = require('path')
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'frontend', 'build', index.html))
-    })
-}
+// if(process.env.NODE_ENV=="production") {
+//     app.use(express.static('frontend/build'))
+//     const path = require('path')
+//     app.get("*", (req, res) => {
+//         res.sendFile(path.resolve(__dirname, 'frontend', 'build', index.html))
+//     })
+// }
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

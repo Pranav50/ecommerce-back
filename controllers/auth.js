@@ -2,7 +2,7 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken"); // to generate signed token
 const expressJwt = require("express-jwt"); // for authorization check
 const { errorHandler } = require("../helpers/dbErrorHandler");
-const {JWT_SECRET} = require('../config/keys')
+const {JWT_SECRET} = require('../config/dev')
 
 exports.signup = (req, res) => {
     // console.log("req.body", req.body);
@@ -54,8 +54,9 @@ exports.signout = (req, res) => {
 
 exports.requireSignin = expressJwt({
     secret: JWT_SECRET,
-    userProperty: "auth"
-});
+    algorithms: ["HS256"], // added later
+    userProperty: "auth",
+  });
 
 exports.isAuth = (req, res, next) => {
     let user = req.profile && req.auth && req.profile._id == req.auth._id
